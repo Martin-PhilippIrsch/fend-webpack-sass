@@ -9,13 +9,14 @@ module.exports = {
     devtool: 'source-map',
     stats: 'verbose',
     module: {
-        rules: [
-            {
-                test: '/\.js$/',
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            }
-        ]
+        rules: [{
+            test: '/\.js$/',
+            exclude: /node_modules/,
+            loader: "babel-loader",
+        }, {
+            test: /\.scss$/,
+            use: ['style-loader', 'css-loader', 'sass-loader'], // loaders are chainable from right to left
+        }]
     },
     plugins: [
         new HtmlWebPackPlugin({
